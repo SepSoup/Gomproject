@@ -1,0 +1,44 @@
+{% load static %}
+
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <link rel="stylesheet" href="{% static 'backend/FoundPage.css' %}">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+</head>
+<body>
+      <div id="seconddiv">
+            <a href="{% url 'lost' %}" class="a2"><h1>گم شده ها</h1></a>
+      </div>
+      <div id="thirddiv">
+            <a href="{% url 'foundreg' %}" class="a2"><h1 style="margin-right: 60px;">ثبت آگهی پیدا شده</h1></a>
+      </div>
+      <div id="maindiv">
+
+         {% for object in objects %}
+            <a href="{% url 'info' object.id %}" class="main_a">
+               <div class="holderdiv">
+
+                  <div class="info_div">
+                     <h2 class="into_info_div">{{object.name}}</h2>
+                  </div>
+
+                  <div class="type_div">
+                     {{object.details}}
+                  </div>
+
+               </div>
+            </a>
+         {% endfor %}
+            
+  
+      </div>      
+      
+      <div id="firstdiv">
+            <a href="{% url 'found' %}" id="a1"><h1>پیدا شده ها</h1></a>
+      </div>
+      
+</body>
+</html>

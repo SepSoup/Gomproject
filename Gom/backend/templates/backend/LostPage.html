@@ -1,0 +1,44 @@
+{% load static %}
+
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="{% static 'backend/Lostpage.css' %}">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+</head>
+<body>
+      <div id="firstdiv">
+            <a href="{% url 'found' %}" class="a2"><h1>پیدا شده ها</h1></a>
+      </div>
+      
+      <div id="thirddiv">
+            <a href="{% url 'lostreg' %}" class="a2"><h1 style="margin-right: 60px;">ثبت آگهی گم شده ها</h1></a>
+      </div>
+      <div id="maindiv">
+
+            {% for object in objects %}
+                  <a href="{% url 'info' object.id %}" class="main_a">
+                        <div class="holderdiv">
+
+                              <div class="info_div">
+                                    <h2 class="into_info_div">{{object.name}}</h2>
+                              </div>
+                  
+                              <div class="type_div">
+                                    {{object.details}}
+                              </div>
+            
+                        </div>
+                  </a>
+            {% endfor %}
+           
+           
+      </div>      
+      <div id="seconddiv">
+            <a href="{% url 'lost' %}" id="a1"><h1>گم شده ها</h1></a>
+      </div>
+     
+</body>
+</html>
